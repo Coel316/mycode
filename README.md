@@ -3,6 +3,7 @@
 One Paragraph of your project description goes here. Describe what you're trying to do.
 What is the purpose of putting up this repo?
 I would like to learn much more about Python.
+I still would like to learn more about Python.
 
 ## Getting Started
 
