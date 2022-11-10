@@ -1,0 +1,4 @@
+#!/usr/bin/python
+
+# 
+daysoftheweek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
