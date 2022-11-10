@@ -4,12 +4,12 @@ from datetime import datetime
 import calendar
 import time
 
-# current date and time
+# current date and time.
 currentdate = datetime.now()
 print("")
 print('The current date is:', currentdate,".\n")
 
-# receive today's date from computer and convert to a number for day of week
+# receive today's date from computer and convert to a number for day of week.
 currentdayofweek = currentdate.isoweekday()
 print('There are 7 days in a week.  Today is #', currentdayofweek)
 print("")
@@ -20,7 +20,7 @@ while(currentdayofweek < 7):
 # date / time library starts with 0 being Sunday.
     if (currentdayofweek == 0):
         print("The day of the week is Sunday\n")
-        break # break(s) are in b/c it kept looping
+        break # break(s) are in b/c it kept looping.
 
     elif(currentdayofweek == 1):
         print("The day of the week is Monday\n")
