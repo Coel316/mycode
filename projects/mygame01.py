@@ -25,7 +25,7 @@ def showStatus():
     print('----------------------------------')
     print('You are in the ' + currentRoom)
     print('')
-    print(' -- Commands: get [key], get [potion], get [fruit], \n drink [water], sleep_in [bed], read [bible], play [riddle] --')   
+    print(' - Commands: get [key], get [potion], get [fruit], \n drink [water], sleep_in [bed], read [bible], play [riddle] -')   
     # print what the player is carrying
     print('')
     print('Inventory:', inventory)
@@ -140,7 +140,7 @@ while True:
 
     # if the user types 'go' first
     if move[0] == 'go':
-        #check that they are allowed wherever they want to go
+        # check that they are allowed wherever they want to go
         if move[1] in rooms[currentRoom]:
             #set the current room to the new room
             currentRoom = rooms[currentRoom][move[1]]
@@ -153,6 +153,7 @@ while True:
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to get
+        # 3. user can ONLY 'get' 3 items (key, potion & fruit)
         if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] in ['key', 'potion', 'fruit']:
             # add the item to their inventory
             inventory.append(move[1])
@@ -170,6 +171,7 @@ while True:
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to drink
+        # 3. user can only drink water, and nothing else.
         if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] in ['water']:
             # display a helpful message
             print('Drink up. ' + move[1] + ' is essential !')
@@ -185,6 +187,7 @@ while True:
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches bed
+        # 3. user can only sleep_in 'bed' and no where else
         if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] in ['bed']:
             #display a helpful message
             print('Comfy ' + move[1] + '.  Enjoy your rest !')
@@ -200,6 +203,7 @@ while True:
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to drink
+        # 3. user can only read the 'Bible'
         if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] in ['bible']:
             #display a useful message
             print('Read your ' + move[1] + ' and pray everyday and you will grow')
@@ -216,6 +220,7 @@ while True:
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to get
+        # 3. user can only play a riddle to get the reward of $500 if he/she answers both riddles correctly
         if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] in ['riddle']:
             # call riddle function here
             riddle() 
@@ -224,6 +229,7 @@ while True:
             print("Can\'t get " + move[1])
 
 # Define other ways a player can win
+        # if user is in the Garden and has a fruit & key in inventory, the game ends with a message
     if currentRoom == 'Garden' and 'fruit' in inventory and 'key' in inventory:
         print("")
         print('YOU WIN!!!, The key to life is to eat lots of Fruits and Veges.')
