@@ -33,4 +33,3 @@ res3 = requests.get(URL + "getcookie")
 # print the results
 print(res2.text)
 print(res3.text)
-
