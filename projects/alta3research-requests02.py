@@ -19,18 +19,18 @@ new_realchar= {
 # json.dumps takes a python object and returns it as a JSON string
 new_realchar= json.dumps(new_realchar)
 
-# requests.post requires two arguments at the minimum
-# a url to send the request 
+# requests.post requires two arguments - a URL (for request)
 # and a json string to attach to the request
 resp = requests.post(URL, json = new_realchar)
 
 # pretty-print the response back from our POST request
 pprint(resp.json())
 
-# calling the URL, and will get back something
-# append 'getcookie' from other script
-# will get a response and will print the results
-res2 = requests.get(URL + "getcookie")
-print(res2.text)
+# append 'getcookie' and 'setcookie'
+res2 = requests.get(URL + "setcookie")
+res3 = requests.get(URL + "getcookie")
 
+# print the results
+print(res2.text)
+print(res3.text)
 

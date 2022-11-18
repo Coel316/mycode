@@ -6,6 +6,7 @@ from flask import request
 from flask import make_response
 from flask import redirect
 from flask import jsonify
+from flask import render_template
 
 import json
 
@@ -38,19 +39,20 @@ def index():
 
     return jsonify(realchar)
 
-# takes a cookie name
-@app.route('/getcookie')
+@app.route('/getcookie', methods=["GET","POST"])
 def cookiename():
-    # checks to see if there is a cookie calld my_cookie_name
-    # 1st time this is called, it wil retrun nothing
-    #2nd time it's called, it will return a set cookie
-    username = request.cookies.get('my_cookie_name')
-    if username == None:
-        username = "no cookie"
-    response = make_response("<h1>cookie is set</h1>" + username)
-    # when called, cookie was already set, and will display super-human
-    response.set_cookie('my_cookie_name', 'super-human')
-    return response
+    cookievalue = request.cookies.get('my_cookie_name')
+    if cookievalue == None:
+       cookievalue = "cookie exists, but will not display in terminal"
+    
+    return cookievalue
+
+@app.route('/setcookie', methods=["GET","POST"])
+def setcookiename():
+    response = make_response("<h1>cookie is set</h1>")
+    response.set_cookie('my_cookie_name', "cookie duplicator")
+
+    return response 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=2224)
